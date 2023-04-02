@@ -168,3 +168,25 @@ class ElectronicProduct extends Product {
 const electronProduct1 = new ElectronicProduct(3, 'button', 50, 'kasa', 'S001')
 console.log(electronProduct1.disscount());
 
+//singletons
+// static methods are connected with main class and dissconnected from instances
+//singletons methods are used for helper method
+// ie parsing , or same method is used many time , 
+//you want to save obj in local storage so first you need to stringfy it and then save it and if you want to get so its needed to parse it 
+// so you make can helper methods for it so through out the application you can use it 
+
+class Util {
+    private static instance: Util;
+    private constructor() {
+    }
+
+    static getInstance() {
+        if (!this.instance) {
+            this.instance = new Util();
+        }
+        return this.instance;
+    }
+}
+
+const utl = Util.getInstance()
+console.log(utl);
