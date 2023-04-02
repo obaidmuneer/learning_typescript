@@ -214,3 +214,13 @@ const tiger: Creature = {
     runnigSpeed: 200
 }
 console.log(tiger);
+
+//intersection types
+type Alien = Animal & Bird; //intersection type
+
+const cockroach: Alien = {
+    name: 'cockroach',
+    runnigSpeed: 100,
+    flyingSpeed: 200
+}
+console.log(cockroach);
