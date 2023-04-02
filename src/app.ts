@@ -190,3 +190,27 @@ class Util {
 
 const utl = Util.getInstance()
 console.log(utl);
+
+
+//union opr
+
+let abc: string | number = 123
+abc = 'apple'
+
+type Animal = {
+    name: string;
+    runnigSpeed: number;
+}
+
+type Bird = {
+    name: string,
+    flyingSpeed: number;
+}
+
+type Creature = Animal | Bird; //union type
+
+const tiger: Creature = {
+    name: 'tiger',
+    runnigSpeed: 200
+}
+console.log(tiger);
