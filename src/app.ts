@@ -85,3 +85,63 @@ const student2 = new Student('shoaib', 456)
 
 student1.skill = 'js'
 student2.skill = 'python'
+
+
+
+// Products
+
+class Product {
+    constructor(
+        private _id: number,
+        private _name: string,
+        private _price: number
+    ) { }
+
+    get name() {
+        return this._name
+    }
+    get id() {
+        return this._id
+    }
+    get price() {
+        return this._price
+    }
+
+    set name(newName: string) {
+        if (!newName) {
+            throw new Error('NAME must be provided')
+        }
+        this._name = newName
+    }
+    set price(newPrice: number) {
+        if (!newPrice) {
+            throw new Error('PRICE must be provided')
+        }
+        this._price = newPrice
+    }
+}
+
+const product1 = new Product(1, 'apple', 150)
+console.log(product1);
+console.log(product1.name);
+product1.name = 'mango'
+console.log(product1);
+
+
+//inheritance
+
+class ClothProducts extends Product {
+    constructor(
+        id: number,
+        name: string,
+        price: number,
+        private _color: string,
+        private _size: 'S' | 'M' | 'L' | 'XL'
+    ) {
+        super(id, name, price)
+    }
+}
+
+const cloth1 = new ClothProducts(2, 'T Shirt', 200, 'blue', 'M')
+console.log(cloth1);
+
