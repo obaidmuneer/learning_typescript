@@ -199,7 +199,7 @@ abc = 'apple'
 
 type Animal = {
     name: string;
-    runnigSpeed: number;
+    runningSpeed: number;
 }
 
 type Bird = {
@@ -209,18 +209,27 @@ type Bird = {
 
 type Creature = Animal | Bird; //union type
 
+//Type Guards
+function log(creature: Creature) {
+    if ('runningSpeed' in creature) {
+        console.log(creature.runningSpeed);
+    }
+}
+
 const tiger: Creature = {
     name: 'tiger',
-    runnigSpeed: 200
+    runningSpeed: 200
 }
 console.log(tiger);
+log(tiger)
+
 
 //intersection types
 type Alien = Animal & Bird; //intersection type
 
 const cockroach: Alien = {
     name: 'cockroach',
-    runnigSpeed: 100,
+    runningSpeed: 100,
     flyingSpeed: 200
 }
 console.log(cockroach);

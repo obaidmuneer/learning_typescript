@@ -134,14 +134,21 @@ console.log(utl);
 //union opr
 let abc = 123;
 abc = 'apple';
+//Type Guards
+function log(creature) {
+    if ('runningSpeed' in creature) {
+        console.log(creature.runningSpeed);
+    }
+}
 const tiger = {
     name: 'tiger',
-    runnigSpeed: 200
+    runningSpeed: 200
 };
 console.log(tiger);
+log(tiger);
 const cockroach = {
     name: 'cockroach',
-    runnigSpeed: 100,
+    runningSpeed: 100,
     flyingSpeed: 200
 };
 console.log(cockroach);
