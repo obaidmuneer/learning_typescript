@@ -90,7 +90,7 @@ student2.skill = 'python'
 
 // Products
 
-class Product {
+abstract class Product {
     constructor(
         private _id: number,
         private _name: string,
@@ -119,13 +119,15 @@ class Product {
         }
         this._price = newPrice
     }
+
+    abstract disscount(): number
 }
 
-const product1 = new Product(1, 'apple', 150)
-console.log(product1);
-console.log(product1.name);
-product1.name = 'mango'
-console.log(product1);
+// const product1 = new Product(1, 'apple', 150)
+// console.log(product1);
+// console.log(product1.name);
+// product1.name = 'mango'
+// console.log(product1);
 
 
 //inheritance
@@ -140,8 +142,29 @@ class ClothProducts extends Product {
     ) {
         super(id, name, price)
     }
+    disscount(): number {
+        return this.price * 0.9
+    }
 }
 
 const cloth1 = new ClothProducts(2, 'T Shirt', 200, 'blue', 'M')
 console.log(cloth1);
+
+class ElectronicProduct extends Product {
+    constructor(
+        id: number,
+        name: string,
+        price: number,
+        private _brand: string,
+        private _model: string
+    ) {
+        super(id, name, price)
+    }
+    disscount(): number {
+        return this.price * 0.8
+    }
+}
+
+const electronProduct1 = new ElectronicProduct(3, 'button', 50, 'kasa', 'S001')
+console.log(electronProduct1.disscount());
 
