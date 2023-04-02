@@ -224,3 +224,40 @@ const cockroach: Alien = {
     flyingSpeed: 200
 }
 console.log(cockroach);
+
+// interfaces
+//can also applied with classes
+
+interface RunningAnimal {
+    name: string;
+    runningSpeed: number;
+    eat(food: string): string
+}
+
+interface FlyingAnimal {
+    name: string;
+    flyingSpeed: number;
+}
+
+// type MixedAnimal = interface RunningAnimal | FlyingAnimal
+
+interface MixedAnimal extends RunningAnimal, FlyingAnimal { }
+// const cockroach2: MixedAnimal = {
+//     name: 'cockroach',
+//     runningSpeed: 100,
+//     flyingSpeed: 100
+// }
+// console.log(cockroach2);
+
+//to apply interface on class use implements keyword
+class MixedAlien implements MixedAnimal {
+    constructor(public name: string, public runningSpeed: number, public flyingSpeed: number) { }
+    eat(food: string): string {
+        return `eating ${food}`
+    }
+}
+
+const alien = new MixedAlien('cockroach', 200, 400)
+console.log(alien.eat('grass'));
+
+
