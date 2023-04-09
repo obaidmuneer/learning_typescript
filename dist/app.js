@@ -237,15 +237,21 @@ Profile = __decorate([
     Logger("Calling from profile"),
     FillHTML("<h1>Hello</h1>", "app")
 ], Profile);
-function fillHTML(template, elemId, constructor) {
-    const p = new constructor();
-    console.log(p);
-    const elem = document.getElementById(elemId);
-    if (elem) {
-        elem.innerHTML = template;
-        elem.querySelector("h1").innerText += " " + p.name;
+function add(x, y) {
+    if (typeof x === "number" && typeof y === "number") {
+        return x + y;
+    }
+    else if (typeof x === "string" && typeof y === "string") {
+        return x + y;
+    }
+    else {
+        throw new Error("Bad combination");
     }
 }
-fillHTML("<h1>Hello</h1>", "app", Profile);
-// fillHTML("<h1>Hello</h1>", "app", MixedAlien)
+// const value = add(1, 1) as number  // you should use function implementation its good
+const value = add(1, 1);
+console.log(value.toFixed());
+// const value2 = add("Hello ", "World") as string
+const value2 = add("Hello ", "World");
+console.log(value2.split(" "));
 //# sourceMappingURL=app.js.map
