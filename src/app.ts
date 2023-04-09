@@ -273,6 +273,7 @@ console.log(alien.eat('grass'));
 //TypeCast
 
 // const input1 = document.querySelector('#input1')! as HTMLInputElement
+// https://www.typescripttutorial.net/typescript-tutorial/type-casting/
 
 //Generics
 
@@ -310,3 +311,50 @@ const merge = <T extends object, U extends object>(objA: T, objB: U) => {
 const merged = merge({ person: 'obaid' }, { id: 123 }) // allowed
 console.log(merged.person);
 
+
+//===================================================================
+// Decorator 
+// decorator are normal/helper functions are used/attached with class only 
+// in which you will have access of data of class 
+// and first letter should be cap
+// we can use decorators with //class //class_property //method //method_arguments //accsess modifier
+// https://www.typescriptlang.org/docs/handbook/decorators.html
+
+function Logger(msg: string) { //decorator factory 
+    return function (constructor: Function) { //decorator
+        console.log('logging...');
+        console.log(msg);
+    }
+}
+
+function FillHTML(template: string, elemId: string) {
+    return function (constructor: any) {
+        const p = new constructor()
+        const elem = document.getElementById(elemId);
+        if (elem) {
+            elem.innerHTML = template;
+            elem.querySelector("h1")!.innerText += " " + p.name
+        }
+    }
+}
+@Logger("Calling from profile")
+@FillHTML("<h1>Hello</h1>", "app")
+class Profile {
+    name = 'Obaid'
+    constructor() {
+
+    }
+}
+
+
+function fillHTML(template: string, elemId: string, constructor: any) {
+    const p = new constructor()
+    console.log(p);
+    const elem = document.getElementById(elemId);
+    if (elem) {
+        elem.innerHTML = template;
+        elem.querySelector("h1")!.innerText += " " + p.name
+    }
+}
+fillHTML("<h1>Hello</h1>", "app", Profile)
+// fillHTML("<h1>Hello</h1>", "app", MixedAlien)

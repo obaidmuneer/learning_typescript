@@ -2,6 +2,12 @@
 // const num1 = document.getElementById('num1')! as HTMLInputElement
 // const num2 = document.getElementById('num2')! as HTMLInputElement
 // const button = document.createElement('add')
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 const person = {
     name: 'obaid',
     roll: 10,
@@ -173,6 +179,7 @@ const alien = new MixedAlien('cockroach', 200, 400);
 console.log(alien.eat('grass'));
 //TypeCast
 // const input1 = document.querySelector('#input1')! as HTMLInputElement
+// https://www.typescripttutorial.net/typescript-tutorial/type-casting/
 //Generics
 const promis = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -198,4 +205,47 @@ const merge = (objA, objB) => {
 // const merged = merge({ person: 'obaid' }, 123) // not allowed
 const merged = merge({ person: 'obaid' }, { id: 123 }); // allowed
 console.log(merged.person);
+//===================================================================
+// Decorator 
+// decorator are normal/helper functions are used/attached with class only 
+// in which you will have access of data of class 
+// and first letter should be cap
+// we can use decorators with //class //class_property //method //method_arguments //accsess modifier
+// https://www.typescriptlang.org/docs/handbook/decorators.html
+function Logger(msg) {
+    return function (constructor) {
+        console.log('logging...');
+        console.log(msg);
+    };
+}
+function FillHTML(template, elemId) {
+    return function (constructor) {
+        const p = new constructor();
+        const elem = document.getElementById(elemId);
+        if (elem) {
+            elem.innerHTML = template;
+            elem.querySelector("h1").innerText += " " + p.name;
+        }
+    };
+}
+let Profile = class Profile {
+    constructor() {
+        this.name = 'Obaid';
+    }
+};
+Profile = __decorate([
+    Logger("Calling from profile"),
+    FillHTML("<h1>Hello</h1>", "app")
+], Profile);
+function fillHTML(template, elemId, constructor) {
+    const p = new constructor();
+    console.log(p);
+    const elem = document.getElementById(elemId);
+    if (elem) {
+        elem.innerHTML = template;
+        elem.querySelector("h1").innerText += " " + p.name;
+    }
+}
+fillHTML("<h1>Hello</h1>", "app", Profile);
+// fillHTML("<h1>Hello</h1>", "app", MixedAlien)
 //# sourceMappingURL=app.js.map
