@@ -171,4 +171,31 @@ class MixedAlien {
 }
 const alien = new MixedAlien('cockroach', 200, 400);
 console.log(alien.eat('grass'));
+//TypeCast
+// const input1 = document.querySelector('#input1')! as HTMLInputElement
+//Generics
+const promis = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('Voila its working');
+    }, 2000);
+});
+promis.then((data) => console.log(data.split(' ')));
+// const merge = (objA: object, objB: object) => {
+//     return { ...objA, ...objB }
+// }
+// const merged = merge({ name: 'obaid' }, { lastname: 'muneer' })
+// console.log(merged.name); // typescript what will come in obj
+// const merge = <T,U>(objA: T, objB: U) => {
+//     return { ...objA, ...objB }
+// }
+// // const merged = merge({ name: 'obaid' }, { lastname: 'muneer' })
+// // console.log(merged.name);
+// // const merged = merge({ person: 'obaid' }, { id: 123 })
+// // console.log(merged.person);
+const merge = (objA, objB) => {
+    return Object.assign(Object.assign({}, objA), objB);
+};
+// const merged = merge({ person: 'obaid' }, 123) // not allowed
+const merged = merge({ person: 'obaid' }, { id: 123 }); // allowed
+console.log(merged.person);
 //# sourceMappingURL=app.js.map
