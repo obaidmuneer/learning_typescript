@@ -382,3 +382,8 @@ console.log(value.toFixed());
 // const value2 = add("Hello ", "World") as string
 const value2 = add("Hello ", "World") 
 console.log(value2.split(" "));
+
+
+//Thanks Saylani 
+//Thanks Ishaq Bojani
+// Thanks Saylani Managment
